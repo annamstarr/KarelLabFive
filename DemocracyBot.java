@@ -13,7 +13,7 @@ public class DemocracyBot extends Robot
     }
     
     public void fixBallots() {
-        for (int i=0; i<10; i++) {
+        for (int i=0; i<5; i++){
             move();
             checkRoom();
             reposition();
@@ -38,7 +38,7 @@ public class DemocracyBot extends Robot
         }
     }
     public void checkBeeperYes() {
-        if (!nextToABeeper()) {
+        while (!nextToABeeper()) {
             putBeeper();
         }
     }
@@ -47,9 +47,8 @@ public class DemocracyBot extends Robot
         move();
         checkBeeperYes();
         faceSouth();
-        while (!frontIsClear()) {
-            move();
-        }
+        move();
+        move();
         checkBeeperYes();
     }
     public void emptyRooms() {
@@ -57,13 +56,12 @@ public class DemocracyBot extends Robot
         move();
         checkBeeperNo();
         faceSouth();
-        while (!frontIsClear()) {
-            move();
-        }
+        move();
+        move();
         checkBeeperNo();
     }
     public void checkBeeperNo() {
-        if (nextToABeeper()) {
+        while (nextToABeeper()) {
             pickBeeper();
         }
     }
